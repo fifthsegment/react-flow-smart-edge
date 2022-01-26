@@ -22,6 +22,7 @@ interface PathFindingEdgeProps<T = any> extends EdgeProps<T> {
 const PathFindingEdge = memo((props: PathFindingEdgeProps) => {
   const {
     sourceX,
+    data,
     sourceY,
     sourcePosition,
     targetX,
@@ -51,17 +52,16 @@ const PathFindingEdge = memo((props: PathFindingEdgeProps) => {
   );
 
   const source: PointInfo = {
-    x: sourceX,
-    y: sourceY,
+    x: sourceX + (data.offsetXsource || 0),
+    y: sourceY + (data.offsetYsource || 0),
     position: sourcePosition,
   };
-
+  
   const target: PointInfo = {
-    x: targetX,
-    y: targetY,
+    x: targetX + (data.offsetXtarget || 0) - 3,
+    y: targetY + (data.offsetYtarget || 0) + Math.round(10), //getPathStoreOverlap(id),
     position: targetPosition,
   };
-
   // With this information, we can create a 2D grid representation of
   // our graph, that tells us where in the graph there is a "free" space or not
   const { grid, start, end } = createGrid(
