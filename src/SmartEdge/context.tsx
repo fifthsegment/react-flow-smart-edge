@@ -15,7 +15,7 @@ const defaultOptions: SmartEdgeOptions = {
   debounceTime: 200,
   nodePadding: 10,
   gridRatio: 10,
-  lineType: 'curve',
+  lineType: 'straight',
   lessCorners: false,
 };
 

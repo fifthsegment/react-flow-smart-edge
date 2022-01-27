@@ -16,10 +16,12 @@ const withDiagonalMovement = {
   allowDiagonal: true,
   dontCrossCorners: true,
   diagonalMovement: DiagonalMovement.Always,
+  weight: 8,
 };
 
 const withStraightMovement = {
   allowDiagonal: false,
+  weight: 8,
 };
 
 export const generatePath = (
