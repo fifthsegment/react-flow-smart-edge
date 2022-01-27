@@ -22,6 +22,7 @@ interface PathFindingEdgeProps<T = any> extends EdgeProps<T> {
 const PathFindingEdge = memo((props: PathFindingEdgeProps) => {
   const {
     sourceX,
+    id,
     data,
     sourceY,
     sourcePosition,
@@ -134,7 +135,7 @@ const PathFindingEdge = memo((props: PathFindingEdgeProps) => {
   ) : null;
 
   const markerEnd = getMarkerEnd(arrowHeadType, markerEndId);
-
+  console.log("Edge ", id, style)
   return (
     <>
       <path
