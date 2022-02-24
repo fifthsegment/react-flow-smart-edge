@@ -16,7 +16,7 @@ const defaultOptions: SmartEdgeOptions = {
   nodePadding: 10,
   gridRatio: 10,
   lineType: 'straight',
-  lessCorners: false,
+  lessCorners: true,
 };
 
 export const SmartEdgeContext = createContext<SmartEdgeOptions | undefined>(

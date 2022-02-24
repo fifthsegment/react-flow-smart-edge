@@ -21,8 +21,8 @@ interface PathFindingEdgeProps<T = any> extends EdgeProps<T> {
 
 const PathFindingEdge = memo((props: PathFindingEdgeProps) => {
   const {
-    sourceX,
     id,
+    sourceX,
     data,
     sourceY,
     sourcePosition,
@@ -59,8 +59,8 @@ const PathFindingEdge = memo((props: PathFindingEdgeProps) => {
   };
   
   const target: PointInfo = {
-    x: targetX + (data.offsetXtarget || 0) - 3,
-    y: targetY + (data.offsetYtarget || 0) + Math.round(10), //getPathStoreOverlap(id),
+    x: targetX + (data.offsetXtarget || 0) ,
+    y: targetY + (data.offsetYtarget || 0) , //getPathStoreOverlap(id),
     position: targetPosition,
   };
   // With this information, we can create a 2D grid representation of
@@ -135,15 +135,24 @@ const PathFindingEdge = memo((props: PathFindingEdgeProps) => {
   ) : null;
 
   const markerEnd = getMarkerEnd(arrowHeadType, markerEndId);
-  console.log("Edge ", id, style)
+  
+  let additionalCls = " " + (id) ;
+  // @ts-ignore: Unreachable code error
+  //if ("stroke" in style) {
+  //  additionalCls = "connected"
+  //}
+  let points:string = (targetX-10) + " " + (targetY-10) + "," + 
+              (targetX+5) + " " + targetY + "," +
+              (targetX-10) + ", " + (targetY+10) ;
   return (
     <>
       <path
         style={style}
-        className="react-flow__edge-path"
+        className={"react-flow__edge-path " + additionalCls}
         d={svgPathString}
         markerEnd={markerEnd}
       />
+      <div className="path-end"></div>
       {text}
     </>
   );
